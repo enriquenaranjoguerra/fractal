@@ -8,7 +8,9 @@ from src import fractal as fr
 import numpy as np
 import matplotlib.pyplot as plt
 
-points = 2
+
+# TODO: change points variable name
+patata = 2
 top_level = 2
 
 
@@ -27,13 +29,10 @@ class Point:
 
 class Segment:
     def __init__(self, p1: Point, p2: Point):
-        if not (isinstance(p1, Point) & isinstance(p2, Point)):
-            raise TypeError("No son clase Point")
+        if not (isinstance(p1, Point) | isinstance(p2, Point)):
+            raise TypeError("They should be points")
         self.p1 = p1
         self.p2 = p2
-
-    def get_coordinates(self):
-        return [[self.p1.x, self.p1.y], [self.p2.x, self.p2.y]]
 
     def get_coordinates_x(self):
         return [self.p1.x, self.p2.x]
@@ -118,7 +117,7 @@ if __name__ == '__main__':
 
     angles = []
 
-    for i in range(points):
+    for i in range(patata):
         angles.append(1 - 1 / (i + 1))
 
     angles = np.array(angles) * np.pi
